@@ -11,5 +11,5 @@ DEPS="php curl"
 function run() {
     log "installing composer"
     curl -sS https://getcomposer.org/installer | php
-    mv composer.phar > $HOME/bin/composer
+    mv composer.phar $HOME/bin/composer
 }
