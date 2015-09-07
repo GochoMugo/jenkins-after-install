@@ -8,6 +8,8 @@ msu_require "console"
 # dependencies
 DEPS="curl"
 
-log "installing nvm"
-export NVM_DIR=$HOME/lib/.nvm
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.26.1/install.sh | bash
+function run() {
+    log "installing nvm"
+    export NVM_DIR=$HOME/lib/.nvm
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.26.1/install.sh | bash
+}
