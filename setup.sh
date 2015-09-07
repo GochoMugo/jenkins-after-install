@@ -12,7 +12,9 @@ log "create a lib/ directory for placing libraries, etc."
 mkdir -p lib/
 
 log "creating a starter bashrc"
-echo "export HOME=$HOME" >> $HOME/.bashrc
+BASHRC=$HOME/.bashrc
+echo "export HOME=$HOME" >> $BASHRC
+echo "export PATH=$HOME/bin:\$PATH" >> $BASHRC
 
 log "setting up nodejs"
 bash nodejs.sh
