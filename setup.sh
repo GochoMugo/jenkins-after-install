@@ -7,8 +7,9 @@ msu_require "console"
 
 DEPS="grep"
 
+BASH_HEADER="# added by jenkins-after-install"
 BASH_STRING="
-# added by jenkins-after-install
+${BASH_HEADER}
 export HOME=$HOME
 export PATH=$HOME/bin:\$PATH
 "
@@ -20,9 +21,9 @@ function run() {
     log "create a lib/ directory for placing libraries, etc."
     mkdir -p lib/
 
-    log "creating a starter bashrc"
+    log "updating bashrc"
     BASHRC=$HOME/.bashrc
-    grep "$BASH_STRING" $BASHRC || {
+    grep "$BASH_HEADER" $BASHRC || {
         echo "$BASH_STRING" >> $BASHRC
     }
 
