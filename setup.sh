@@ -18,8 +18,8 @@ function run() {
     echo "export PATH=$HOME/bin:\$PATH" >> $BASHRC
 
     log "setting up nodejs"
-    msu x jenkins-after-install.nodejs.run
+    msu - jenkins-after-install.nodejs.run
 
     log "setting up php"
-    msu x jenkins-after-install.php.run
+    msu - jenkins-after-install.php.run
 }
