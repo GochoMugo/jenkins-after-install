@@ -5,6 +5,14 @@
 # modules
 msu_require "console"
 
+DEPS="grep"
+
+BASH_STRING="
+# added by jenkins-after-install
+export HOME=$HOME
+export PATH=$HOME/bin:\$PATH
+"
+
 function run() {
     log "create a bin/ directory for placing executables"
     mkdir -p bin/
@@ -14,8 +22,9 @@ function run() {
 
     log "creating a starter bashrc"
     BASHRC=$HOME/.bashrc
-    echo "export HOME=$HOME" >> $BASHRC
-    echo "export PATH=$HOME/bin:\$PATH" >> $BASHRC
+    grep "$BASH_STRING" $BASHRC || {
+        echo "$BASH_STRING" >> $BASHRC
+    }
 
     log "setting up nodejs"
     msu - jenkins-after-install.nodejs.run
